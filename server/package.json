@@ -1,0 +1,14 @@
+{
+    "name": "server",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nexus dev",
+        "build": "nexus build",
+        "start": "node .nexus/build/api"
+    },
+    "dependencies": {
+        "nexus": "0.26.1",
+        "nexus-plugin-prisma": "^0.18.1"
+    }
+}
