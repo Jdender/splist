@@ -26,5 +26,11 @@
         "ecmaFeatures": {
             "jsx": true
         }
+    },
+    "settings": {
+        "react": {
+            "version": "detect",
+            "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
+        }
     }
 }
