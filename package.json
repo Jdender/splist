@@ -35,9 +35,7 @@
         }
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,json,md}": [
-            "yarn lint",
-            "yarn format"
-        ]
+        "*.{js,jsx,ts,tsx}": "eslint --fix --ignore-path .gitignore",
+        "*.{js,jsx,ts,tsx,json,md}": "prettier --write"
     }
 }
