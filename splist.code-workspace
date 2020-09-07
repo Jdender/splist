@@ -26,9 +26,12 @@
             "**/.hg": true,
             "**/CVS": true,
             "**/.DS_Store": true,
+            "**/node_modules": true,
             "client": true,
-            "server": true,
-            "**/node_modules": true
+            ".parcel-cache": true,
+            "generated": true,
+            "dist": true,
+            "server": true
         }
     }
 }
