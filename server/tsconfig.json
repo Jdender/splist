@@ -4,7 +4,7 @@
         "module": "commonjs",
         "lib": ["esnext"],
         "strict": true,
-        "rootDir": "api",
+        "rootDir": "src",
         "noEmit": true,
         "plugins": [
             {
@@ -14,5 +14,5 @@
         "typeRoots": ["node_modules/@types", "types"],
         "esModuleInterop": true
     },
-    "include": ["types.d.ts", "api"]
+    "include": ["types.d.ts", "src"]
 }

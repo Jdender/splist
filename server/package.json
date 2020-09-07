@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "nexus dev",
         "build": "nexus build",
-        "start": "node .nexus/build/api"
+        "start": "node .nexus/build/src"
     },
     "dependencies": {
         "nexus": "0.26.1",
