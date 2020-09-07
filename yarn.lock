@@ -7507,7 +7507,7 @@ nexus-plugin-prisma@^0.18.1:
     prismjs "^1.20.0"
     stacktrace-parser "^0.1.10"
 
-nexus@0.26.1:
+nexus@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/nexus/-/nexus-0.26.1.tgz#817329a987a858cb27ee4fd3c8526284bf5b793c"
   integrity sha512-UFTJRGQJLSlxorWnKE2uLJbOq9kpoXFhswlA4sILMwwObtNVMByk1TSUYjDAsZVDxVLY9zCWpXVn/YlF8gEH/g==
