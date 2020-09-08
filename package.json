@@ -7,8 +7,8 @@
     "private": true,
     "workspaces": [
         "web",
-        "campsite",
         "caravan",
+        "campsite",
         "catalog"
     ],
     "scripts": {
