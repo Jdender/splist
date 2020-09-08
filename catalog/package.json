@@ -1,16 +1,5 @@
 {
     "name": "splist-ref-catalog",
     "version": "0.0.0",
-    "license": "MIT",
-    "scripts": {
-        "dev": "nexus dev",
-        "build": "nexus build",
-        "start": "node .nexus/build/src",
-        "db:save": "prisma migrate save --experimental",
-        "db:up": "prisma migrate up --experimental"
-    },
-    "dependencies": {
-        "nexus": "^0.26.1",
-        "nexus-plugin-prisma": "^0.18.1"
-    }
+    "license": "MIT"
 }
