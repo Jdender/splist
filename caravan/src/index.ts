@@ -44,5 +44,5 @@ async function main() {
     const { url } = await server.listen();
     console.log(`🚀  Server ready at ${url}`);
 }
-const tap = <T>(t: T) => (console.log(t), t);
+
 main();
