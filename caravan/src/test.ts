@@ -8,6 +8,7 @@ import {
     Arg,
     PubSub,
     Publisher,
+    Authorized,
 } from 'type-graphql';
 
 const PING_PONG_TOPIC = 'PING_PONG';
@@ -15,11 +16,13 @@ const PING_PONG_TOPIC = 'PING_PONG';
 @Service()
 @Resolver()
 export class TestResolver {
+    @Authorized()
     @Query(() => String)
     public hello() {
         return 'world!';
     }
 
+    @Authorized()
     @Mutation(() => String)
     public ping(
         @Arg('message') message: string,
@@ -29,6 +32,7 @@ export class TestResolver {
         return message;
     }
 
+    @Authorized()
     @Subscription(() => String, {
         topics: PING_PONG_TOPIC,
     })

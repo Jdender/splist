@@ -23,5 +23,5 @@ type Subscription {
 }
 
 type User {
-  id: String!
+  id: ID!
 }

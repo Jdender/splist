@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { User, AuthPayload } from './define';
 import cuid from 'cuid';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 import { TOKEN_SECRET, build } from '../util';
 
 @Service()
@@ -24,6 +24,14 @@ export class UserService {
             token,
             user,
         });
+    }
+
+    public async getUserFromToken(token: string): Promise<User | undefined> {
+        const payload = verify(token, TOKEN_SECRET);
+        if (typeof payload !== 'object') return;
+
+        const id = (payload as { subject: string | undefined })?.subject;
+        return this.repo.findOne(id);
     }
 
     public fetchAllUsers(): Promise<User[]> {
