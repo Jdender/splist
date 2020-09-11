@@ -1,10 +1,16 @@
 import { Arg, ClassType } from 'type-graphql';
 import { plainToClass } from 'class-transformer';
 
-export const build = <T>(cls: ClassType<T>, obj: Omit<T, typeof CLASS>) =>
-    plainToClass(cls, obj);
+export const build = <T extends Class>(
+    cls: ClassType<T>,
+    obj: Omit<T, typeof CLASS>,
+) => plainToClass(cls, obj);
 
-export const CLASS = Symbol();
+const CLASS = Symbol();
+
+export abstract class Class {
+    [CLASS] = CLASS;
+}
 
 export const Input = () => Arg('input');
 

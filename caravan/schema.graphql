@@ -8,15 +8,9 @@ type AuthPayload {
   user: User!
 }
 
-union AuthResult = AuthPayload | HandleTakenError
-
-type HandleTakenError {
-  handle: String!
-}
-
 type Mutation {
   ping(message: String!): String!
-  signup(input: SignupInput!): AuthResult!
+  signup: AuthPayload!
 }
 
 type Query {
@@ -24,15 +18,10 @@ type Query {
   users: [User!]!
 }
 
-input SignupInput {
-  handle: String!
-}
-
 type Subscription {
   pong: String!
 }
 
 type User {
-  handle: String!
   id: String!
 }
