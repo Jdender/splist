@@ -16,12 +16,12 @@ const PING_PONG_TOPIC = 'PING_PONG';
 @Resolver()
 export class TestResolver {
     @Query(() => String)
-    hello() {
+    public hello() {
         return 'world!';
     }
 
     @Mutation(() => String)
-    ping(
+    public ping(
         @Arg('message') message: string,
         @PubSub(PING_PONG_TOPIC) publish: Publisher<string>,
     ) {
@@ -32,7 +32,7 @@ export class TestResolver {
     @Subscription(() => String, {
         topics: PING_PONG_TOPIC,
     })
-    pong(@Root() message: string) {
+    public pong(@Root() message: string) {
         return message;
     }
 }

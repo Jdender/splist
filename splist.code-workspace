@@ -10,9 +10,6 @@
             "path": "campsite"
         },
         {
-            "path": "catalog"
-        },
-        {
             "path": "."
         }
     ],
@@ -38,8 +35,7 @@
             "generated": true,
             "dist": true,
             "caravan": true,
-            "campsite": true,
-            "catalog": true
+            "campsite": true
         }
     }
 }

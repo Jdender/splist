@@ -3,14 +3,36 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+union AuthResult = AuthPayload | HandleTakenError
+
+type HandleTakenError {
+  handle: String!
+}
+
 type Mutation {
   ping(message: String!): String!
+  signup(input: SignupInput!): AuthResult!
 }
 
 type Query {
   hello: String!
+  users: [User!]!
+}
+
+input SignupInput {
+  handle: String!
 }
 
 type Subscription {
   pong: String!
+}
+
+type User {
+  handle: String!
+  id: String!
 }

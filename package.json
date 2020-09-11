@@ -8,8 +8,7 @@
     "workspaces": [
         "web",
         "caravan",
-        "campsite",
-        "catalog"
+        "campsite"
     ],
     "scripts": {
         "lint": "eslint --fix --ignore-path .gitignore \"**/*.{js,jsx,ts,tsx}\"",
