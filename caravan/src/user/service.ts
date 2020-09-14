@@ -26,12 +26,19 @@ export class UserService {
         });
     }
 
-    public async getUserFromToken(token: string): Promise<User | undefined> {
-        const payload = verify(token, TOKEN_SECRET);
-        if (typeof payload !== 'object') return;
+    private verify(token: string) {
+        try {
+            const payload = verify(token, TOKEN_SECRET);
+            if (typeof payload !== 'object') return;
+            return payload;
+        } catch {
+            return;
+        }
+    }
 
-        const id = (payload as { subject: string | undefined })?.subject;
-        return this.repo.findOne(id);
+    public async getUserFromToken(token: string): Promise<User | undefined> {
+        const payload = this.verify(token) as { subject: string | undefined };
+        return this.repo.findOne(payload?.subject);
     }
 
     public fetchAllUsers(): Promise<User[]> {
