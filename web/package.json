@@ -10,10 +10,12 @@
     },
     "dependencies": {
         "@apollo/client": "^3.1.4",
+        "@types/react-router-dom": "^5.1.5",
         "graphql": "^15.3.0",
         "jotai": "^0.3.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
         "subscriptions-transport-ws": "^0.9.18"
     },
     "devDependencies": {
