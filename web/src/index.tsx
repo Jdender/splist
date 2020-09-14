@@ -2,8 +2,8 @@ import { render } from 'react-dom';
 import React, { FC } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { useGetHelloQuery } from '../generated/graphql';
-import { createClient, TOKEN, useLocalStorage } from './util';
-import { Provider } from 'jotai';
+import { createClient, storedAtom, TOKEN } from './util';
+import { Provider, useAtom } from 'jotai';
 import { BrowserRouter } from 'react-router-dom';
 
 const Test: FC = () => {
@@ -16,11 +16,10 @@ const Test: FC = () => {
     return <h1>Hello {data.hello}</h1>;
 };
 
-interface LoginProps {
-    setToken: (arg: string) => void;
-}
+const tokenAtom = storedAtom('token', '');
 
-const Login: FC<LoginProps> = ({ setToken }) => {
+const Login: FC = () => {
+    const [, setToken] = useAtom(tokenAtom);
     return (
         <>
             <h1>Not Logged In</h1>
@@ -30,23 +29,26 @@ const Login: FC<LoginProps> = ({ setToken }) => {
 };
 
 const Index: FC = () => {
-    const [token, setToken] = useLocalStorage('token', '');
+    const [token] = useAtom(tokenAtom);
 
     if (!token) {
-        return <Login setToken={setToken} />;
+        return <Login />;
     }
 
     const client = createClient(token);
 
     return (
-        <Provider>
-            <BrowserRouter>
-                <ApolloProvider client={client}>
-                    <Test />
-                </ApolloProvider>
-            </BrowserRouter>
-        </Provider>
+        <ApolloProvider client={client}>
+            <Test />
+        </ApolloProvider>
     );
 };
 
-render(<Index />, document.getElementById('app'));
+render(
+    <Provider>
+        <BrowserRouter>
+            <Index />
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('app'),
+);
