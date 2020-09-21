@@ -27,12 +27,11 @@
             "**/CVS": true,
             "**/.DS_Store": true,
             "**/node_modules": true,
-            "web": true,
+            "client": true,
             ".parcel-cache": true,
             "generated": true,
             "dist": true,
-            "caravan": true,
-            "campsite": true
+            "server": true
         }
     }
 }
