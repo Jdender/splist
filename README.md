@@ -1,3 +1,1 @@
-# Splist Ref
-
-> Splist Reference Implementation
+# Splist

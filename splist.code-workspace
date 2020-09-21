@@ -1,13 +1,10 @@
 {
     "folders": [
         {
-            "path": "web"
+            "path": "client"
         },
         {
-            "path": "caravan"
-        },
-        {
-            "path": "campsite"
+            "path": "server"
         },
         {
             "path": "."

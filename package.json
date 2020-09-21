@@ -1,14 +1,13 @@
 {
-    "name": "splist-ref",
+    "name": "splist",
     "version": "0.0.0",
     "description": "",
     "author": "Jdender~ <jdenderplays@gmail.com> (https://github.com/Jdender)",
     "license": "MIT",
     "private": true,
     "workspaces": [
-        "web",
-        "caravan",
-        "campsite"
+        "client",
+        "server"
     ],
     "scripts": {
         "lint": "eslint --fix --ignore-path .gitignore \"**/*.{js,jsx,ts,tsx}\"",
