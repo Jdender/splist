@@ -90,7 +90,7 @@ export class UserService {
 
     public async getUserFromToken(token: string): Promise<User | undefined> {
         const payload = this.verify(token) as { subject: string | undefined };
-        return this.repo.findOne(payload?.subject);
+        return this.repo.findOne(payload?.subject ?? '');
     }
 
     public fetchAllUsers(): Promise<User[]> {

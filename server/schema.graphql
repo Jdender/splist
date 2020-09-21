@@ -3,11 +3,6 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-input AuthInput {
-  handle: String!
-  password: String!
-}
-
 type AuthPayload {
   token: String!
   user: User!
@@ -22,12 +17,17 @@ type InvalidHandleOrPasswordError {
   password: String!
 }
 
+input LoginInput {
+  handle: String!
+  password: String!
+}
+
 union LoginResult = AuthPayload | InvalidHandleOrPasswordError
 
 type Mutation {
-  login(input: AuthInput!): LoginResult!
+  login(input: LoginInput!): LoginResult!
   ping(message: String!): String!
-  signup(input: AuthInput!): SignResult!
+  signup(input: SignupInput!): SignResult!
 }
 
 type Query {
@@ -36,6 +36,11 @@ type Query {
 }
 
 union SignResult = AuthPayload | HandleAlreadyTakenError
+
+input SignupInput {
+  handle: String!
+  password: String!
+}
 
 type Subscription {
   pong: String!
