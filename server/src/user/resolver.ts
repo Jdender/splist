@@ -1,6 +1,12 @@
 import { Service, Inject } from 'typedi';
 import { Resolver, Mutation, Query } from 'type-graphql';
-import { AuthInput, LoginResult, SignupResult, User } from './define';
+import {
+    LoginInput,
+    LoginResult,
+    SignupInput,
+    SignupResult,
+    User,
+} from './define';
 import { UserService } from './service';
 import { Input } from '../util';
 
@@ -11,12 +17,12 @@ export class UserResolver {
     private service: UserService;
 
     @Mutation(() => SignupResult)
-    public signup(@Input() input: AuthInput) {
+    public signup(@Input() input: SignupInput) {
         return this.service.createUser(input);
     }
 
     @Mutation(() => LoginResult)
-    public login(@Input() input: AuthInput) {
+    public login(@Input() input: LoginInput) {
         return this.service.createTokenFromUser(input);
     }
 

@@ -6,9 +6,10 @@ import {
     AuthPayload,
     SignupResult,
     LoginResult,
-    AuthInput,
+    LoginInput,
     HandleAlreadyTakenError,
     InvalidHandleOrPasswordError,
+    SignupInput,
 } from './define';
 import cuid from 'cuid';
 import { sign, verify } from 'jsonwebtoken';
@@ -23,7 +24,7 @@ export class UserService {
     public async createUser({
         handle,
         password: rawPassword,
-    }: AuthInput): Promise<SignupResult> {
+    }: SignupInput): Promise<SignupResult> {
         const id = cuid();
 
         const existing = await this.repo.findOne({
@@ -57,7 +58,7 @@ export class UserService {
     public async createTokenFromUser({
         handle,
         password,
-    }: AuthInput): Promise<LoginResult> {
+    }: LoginInput): Promise<LoginResult> {
         const user = await this.repo.findOne({ where: { handle } });
 
         if (!user || !(await compare(password, user.password))) {

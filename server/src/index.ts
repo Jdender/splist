@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { buildSchema } from 'type-graphql';
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer, AuthenticationError } from 'apollo-server';
 import { Container } from 'typedi';
 import { TestResolver } from './test';
 import { createConnection, useContainer as typeormContainer } from 'typeorm';
@@ -39,6 +39,8 @@ async function main() {
             const user = await Container.get(UserService).getUserFromToken(
                 token,
             );
+
+            if (!user) throw new AuthenticationError('User no longer exists');
 
             return { user };
         },
