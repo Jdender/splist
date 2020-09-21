@@ -3,14 +3,31 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input AuthInput {
+  handle: String!
+  password: String!
+}
+
 type AuthPayload {
   token: String!
   user: User!
 }
 
+type HandleAlreadyTakenError {
+  handle: String!
+}
+
+type InvalidHandleOrPasswordError {
+  handle: String!
+  password: String!
+}
+
+union LoginResult = AuthPayload | InvalidHandleOrPasswordError
+
 type Mutation {
+  login(input: AuthInput!): LoginResult!
   ping(message: String!): String!
-  signup: AuthPayload!
+  signup(input: AuthInput!): SignResult!
 }
 
 type Query {
@@ -18,10 +35,13 @@ type Query {
   users: [User!]!
 }
 
+union SignResult = AuthPayload | HandleAlreadyTakenError
+
 type Subscription {
   pong: String!
 }
 
 type User {
+  handle: String!
   id: ID!
 }

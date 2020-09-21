@@ -28,7 +28,7 @@ async function main() {
 
     const server = new ApolloServer({
         schema,
-        context: ({ req, connection }) => {
+        context: async ({ req, connection }) => {
             const token = (
                 req?.headers?.authorization ??
                 connection?.context?.Authorization ??
@@ -36,7 +36,10 @@ async function main() {
             ).split(' ')[1];
             if (!token) return {};
 
-            const user = Container.get(UserService).getUserFromToken(token);
+            const user = await Container.get(UserService).getUserFromToken(
+                token,
+            );
+
             return { user };
         },
     });
